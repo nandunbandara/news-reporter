@@ -71,5 +71,5 @@
         android:layout_below="@+id/btn-signin"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:text="Dont have an account? Sign Up" />
+        android:text="Don't have an account? Sign Up" />
 </RelativeLayout>
