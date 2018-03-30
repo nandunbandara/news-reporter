@@ -1,7 +1,6 @@
 package me.nandunb.newsreporter;
 
 import android.content.Intent;
-import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,9 +15,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-import org.xml.sax.helpers.LocatorImpl;
-
-public class LoginActivity extends AppCompatActivity {
+public class SignInActivity extends AppCompatActivity {
 
     private static final String TAG = "NR_DEBUG";
 
@@ -52,7 +49,7 @@ public class LoginActivity extends AppCompatActivity {
         String password = passwordText.getText().toString();
 
         if(email.isEmpty() || password.isEmpty()){
-            Toast.makeText(LoginActivity.this, "Enter email and password!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(SignInActivity.this, "Enter email and password!", Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -63,11 +60,11 @@ public class LoginActivity extends AppCompatActivity {
                 if(task.isSuccessful()) {
                     Log.d(TAG, "signInWithEmailAndPassword: success");
                     FirebaseUser user = mAuth.getCurrentUser();
-                    Toast.makeText(LoginActivity.this, "Login successful!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignInActivity.this, "Login successful!", Toast.LENGTH_SHORT).show();
                     updateUI(user);
                 }else{
                     Log.w(TAG, "signInWithEmailAndPassword: failure");
-                    Toast.makeText(LoginActivity.this, "Login failed!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignInActivity.this, "Login failed!", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -75,7 +72,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void updateUI(FirebaseUser user){
-        Intent intent = new Intent(this, NewsFeed.class);
+        Intent intent = new Intent(this, NewsFeedActivity.class);
         intent.putExtra("displayName", user.getDisplayName());
         intent.putExtra("email", user.getEmail());
         startActivity(intent);
