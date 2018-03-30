@@ -35,7 +35,7 @@
         android:layout_alignStart="@+id/user_password"
         android:layout_below="@+id/user_password"
         android:layout_marginTop="37dp"
-        android:onClick="signin"
+        android:onClick="signIn"
         android:text="LOGIN" />
 
     <TextView

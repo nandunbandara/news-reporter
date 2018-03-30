@@ -16,6 +16,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import org.xml.sax.helpers.LocatorImpl;
+
 public class LoginActivity extends AppCompatActivity {
 
     private static final String TAG = "NR_DEBUG";
@@ -35,19 +37,24 @@ public class LoginActivity extends AppCompatActivity {
         super.onStart();
 
         //Check if the user is logged in and go to feed
-//        FirebaseUser currentUser = mAuth.getCurrentUser();
-//        if(currentUser != null){
-//            updateUI(currentUser);
-//        }
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if(currentUser != null){
+            updateUI(currentUser);
+        }
     }
 
-    public void signin(View view) {
+    public void signIn(View view) {
 
         EditText emailText = (EditText) findViewById(R.id.user_email);
         EditText passwordText = (EditText) findViewById(R.id.user_password);
 
         String email = emailText.getText().toString();
         String password = passwordText.getText().toString();
+
+        if(email.isEmpty() || password.isEmpty()){
+            Toast.makeText(LoginActivity.this, "Enter email and password!", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
         mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
 
@@ -69,7 +76,8 @@ public class LoginActivity extends AppCompatActivity {
 
     public void updateUI(FirebaseUser user){
         Intent intent = new Intent(this, NewsFeed.class);
-        intent.putExtra("user", (Parcelable) user);
+        intent.putExtra("displayName", user.getDisplayName());
+        intent.putExtra("email", user.getEmail());
         startActivity(intent);
     }
 }
