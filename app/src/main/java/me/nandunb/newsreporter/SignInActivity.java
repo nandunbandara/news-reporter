@@ -24,7 +24,7 @@ public class SignInActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_signIn);
 
         mAuth = FirebaseAuth.getInstance();
     }
@@ -42,8 +42,8 @@ public class SignInActivity extends AppCompatActivity {
 
     public void signIn(View view) {
 
-        EditText emailText = (EditText) findViewById(R.id.user_email);
-        EditText passwordText = (EditText) findViewById(R.id.user_password);
+        EditText emailText = findViewById(R.id.user_email);
+        EditText passwordText = findViewById(R.id.user_password);
 
         String email = emailText.getText().toString();
         String password = passwordText.getText().toString();
