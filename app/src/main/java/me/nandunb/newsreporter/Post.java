@@ -12,14 +12,14 @@ public class Post {
     private String displayName;
     private String photoUrl;
     private String caption;
-    private Date createOn;
+    private Date createdOn;
 
     public Post(String email, String displayName, String photoUrl, String caption){
         this.email = email;
         this.displayName = displayName;
         this.photoUrl = photoUrl;
         this.caption = caption;
-        this.createOn = new Date();
+        this.createdOn = new Date();
     }
 
     public String getEmail(){
@@ -38,16 +38,16 @@ public class Post {
         return caption;
     }
 
-    public Date getCreateOn() {
-        return createOn;
+    public Date getCreatedOn() {
+        return createdOn;
     }
 
     public void setCaption(String caption) {
         this.caption = caption;
     }
 
-    public void setCreateOn(Date createOn) {
-        this.createOn = createOn;
+    public void setCreatedOn(Date createdOn) {
+        this.createdOn = createdOn;
     }
 
     public void setDisplayName(String displayName) {
