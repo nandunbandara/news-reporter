@@ -1,5 +1,6 @@
 package me.nandunb.newsreporter;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -13,5 +14,10 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
     public void signUp(View view) {
+    }
+
+    public void goToLogin(View view){
+        Intent loginIntent = new Intent(SignUpActivity.this, SignInActivity.class);
+        startActivity(loginIntent);
     }
 }
