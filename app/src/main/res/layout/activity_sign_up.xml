@@ -96,6 +96,7 @@
         android:layout_alignBottom="@+id/textView2"
         android:layout_toEndOf="@+id/textView2"
         android:text="Login"
+        android:textStyle="bold"
         android:onClick="goToLogin"/>
 
 </RelativeLayout>
