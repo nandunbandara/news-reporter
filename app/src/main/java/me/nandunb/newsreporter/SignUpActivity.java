@@ -58,6 +58,22 @@ public class SignUpActivity extends AppCompatActivity {
         final String displayName = txtDisplayName.getText().toString();
         String password = txtPassword.getText().toString();
 
+        //Validation
+        String error_msg = null;
+
+        if(email.isEmpty()){
+            error_msg = "Please enter an email";
+        }else if(displayName.isEmpty()) {
+            error_msg = "Please enter a display name";
+        }else if(password.isEmpty()){
+            error_msg = "Please enter a password";
+        }
+
+        if(error_msg != null){
+            Toast.makeText(SignUpActivity.this, error_msg, Toast.LENGTH_LONG);
+            return;
+        }
+
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
