@@ -29,11 +29,11 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/user_signup_email"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="11dp"
         android:ems="10"
         android:fontFamily="sans-serif"
-        android:inputType="textEmailAddress"
         android:hint="Display Name"
+        android:inputType="textEmailAddress"
         android:textSize="14sp" />
 
     <EditText
