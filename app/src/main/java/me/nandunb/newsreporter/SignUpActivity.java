@@ -1,5 +1,6 @@
 package me.nandunb.newsreporter;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -19,6 +20,7 @@ import com.google.firebase.auth.UserProfileChangeRequest;
 public class SignUpActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
+    private ProgressDialog pDialog;
 
     static final String TAG = "NR_DEBUG";
 
@@ -28,6 +30,7 @@ public class SignUpActivity extends AppCompatActivity {
         setContentView(R.layout.activity_sign_up);
 
         mAuth = FirebaseAuth.getInstance();
+        pDialog = new ProgressDialog(SignUpActivity.this);
     }
 
     @Override
@@ -74,6 +77,9 @@ public class SignUpActivity extends AppCompatActivity {
             return;
         }
 
+        pDialog.setMessage("Creating your account...");
+        pDialog.show();
+
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
@@ -92,10 +98,12 @@ public class SignUpActivity extends AppCompatActivity {
                                         public void onComplete(@NonNull Task<Void> task) {
                                             Toast.makeText(SignUpActivity.this,
                                                     "Sign Up successful!", Toast.LENGTH_SHORT);
+                                            pDialog.dismiss();
                                             updateUI(currentUser);
                                         }
                                     });
                         }else {
+                            pDialog.dismiss();
                             Log.w(TAG, "Sign Up failed");
                             Toast.makeText(SignUpActivity.this, "Sign Up failed!", Toast.LENGTH_SHORT);
                         }
