@@ -1,5 +1,6 @@
 package me.nandunb.newsreporter;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -7,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -20,6 +22,7 @@ public class SignInActivity extends AppCompatActivity {
     private static final String TAG = "NR_DEBUG";
 
     private FirebaseAuth mAuth;
+    private ProgressDialog pDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +30,8 @@ public class SignInActivity extends AppCompatActivity {
         setContentView(R.layout.activity_signin);
 
         mAuth = FirebaseAuth.getInstance();
+
+        pDialog = new ProgressDialog(SignInActivity.this);
     }
 
     @Override
@@ -53,6 +58,8 @@ public class SignInActivity extends AppCompatActivity {
             return;
         }
 
+        pDialog.setMessage("Logging you in...");
+        pDialog.show();
         mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
 
             @Override
@@ -61,8 +68,10 @@ public class SignInActivity extends AppCompatActivity {
                     Log.d(TAG, "signInWithEmailAndPassword: success");
                     FirebaseUser user = mAuth.getCurrentUser();
                     Toast.makeText(SignInActivity.this, "Login successful!", Toast.LENGTH_SHORT).show();
+                    pDialog.dismiss();
                     updateUI(user);
                 }else{
+                    pDialog.dismiss();
                     Log.w(TAG, "signInWithEmailAndPassword: failure");
                     Toast.makeText(SignInActivity.this, "Login failed!", Toast.LENGTH_SHORT).show();
                 }
@@ -75,6 +84,11 @@ public class SignInActivity extends AppCompatActivity {
         Intent intent = new Intent(this, NewsFeedActivity.class);
         intent.putExtra("displayName", user.getDisplayName());
         intent.putExtra("email", user.getEmail());
+        startActivity(intent);
+    }
+
+    public void goToSignUp(View view){
+        Intent intent = new Intent(this, SignUpActivity.class);
         startActivity(intent);
     }
 }
