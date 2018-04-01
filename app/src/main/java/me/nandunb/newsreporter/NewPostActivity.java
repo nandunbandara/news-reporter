@@ -1,5 +1,6 @@
 package me.nandunb.newsreporter;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.provider.MediaStore;
@@ -23,12 +24,14 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.io.ByteArrayOutputStream;
+import java.sql.Timestamp;
 import java.util.Date;
 
 public class NewPostActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     private StorageReference mStorageRef;
+    private ProgressDialog pDialog;
 
     static final int REQUEST_IMAGE_CAPTURE = 1;
 
@@ -42,6 +45,7 @@ public class NewPostActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         mStorageRef = FirebaseStorage.getInstance("gs://news-reporter-4fd27.appspot.com").getReference();
 
+        pDialog = new ProgressDialog(NewPostActivity.this);
     }
 
     @Override
@@ -74,10 +78,14 @@ public class NewPostActivity extends AppCompatActivity {
 
     public void addPost(View view) {
 
+        pDialog.setMessage("Creating new post...");
+        pDialog.show();
+
         FirebaseUser user = mAuth.getCurrentUser();
 
         final String email = user.getEmail();
         final String displayName = user.getDisplayName();
+        final String uid = user.getUid();
 
         TextView txtCaption = findViewById(R.id.txtCaption);
         final String caption = txtCaption.getText().toString();
@@ -105,30 +113,42 @@ public class NewPostActivity extends AppCompatActivity {
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                 String photoUrl = taskSnapshot.getDownloadUrl().toString();
 
-                addDatabaseRecord(email, displayName, photoUrl, caption);
+                addDatabaseRecord(uid, email, displayName, photoUrl, caption);
 
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
+                pDialog.dismiss();
                 Log.w(TAG, "Post created: failure");
-                Toast.makeText(NewPostActivity.this, "Could not create new post!", Toast.LENGTH_SHORT);
+                Toast.makeText(NewPostActivity.this, "Could not create new post!", Toast.LENGTH_LONG);
             }
         });
 
 
     }
 
-    public void addDatabaseRecord(String email, String displayName, String photoUrl, String caption){
+    public void addDatabaseRecord(String uid, String email, String displayName, String photoUrl, String caption){
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference ref = database.getReference("post");
 
         Post post = new Post(email, displayName, photoUrl, caption);
 
-        ref.setValue(post);
+        String postId = uid+"-"+ post.getCreatedOn().getTime();
 
-        Toast.makeText(NewPostActivity.this, "New post created!", Toast.LENGTH_SHORT);
+        Log.d(TAG, "postId:"+postId);
+
+        ref.child(postId).setValue(post);
+
+        Toast.makeText(NewPostActivity.this, "New post created!", Toast.LENGTH_LONG);
+
+
+        //Back to news feed view
+        Intent intent = new Intent(NewPostActivity.this, NewsFeedActivity.class);
+        startActivity(intent);
+
+        pDialog.dismiss();
 
     }
 }
