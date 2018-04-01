@@ -46,6 +46,8 @@ public class NewPostActivity extends AppCompatActivity {
         mStorageRef = FirebaseStorage.getInstance("gs://news-reporter-4fd27.appspot.com").getReference();
 
         pDialog = new ProgressDialog(NewPostActivity.this);
+
+        capturePhoto(null);
     }
 
     @Override

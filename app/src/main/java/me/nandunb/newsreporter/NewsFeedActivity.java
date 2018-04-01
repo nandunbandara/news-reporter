@@ -30,6 +30,8 @@ public class NewsFeedActivity extends AppCompatActivity {
     private DatabaseReference ref;
     private List<Post> posts;
 
+    static final String TAG = "NR_DEBUG";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -101,10 +103,12 @@ public class NewsFeedActivity extends AppCompatActivity {
 
         posts.clear();
 
-        for (DataSnapshot ds :  snapshot.getChildren()){
-            Post post = ds.getValue(Post.class);
-            posts.add(post);
-        }
+        Log.d(TAG, snapshot.getKey());
+
+        Post post = snapshot.getValue(Post.class);
+        posts.add(post);
+
+        Log.d(TAG, post.getEmail());
 
     }
 
