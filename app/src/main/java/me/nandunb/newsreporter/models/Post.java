@@ -1,4 +1,4 @@
-package me.nandunb.newsreporter;
+package me.nandunb.newsreporter.models;
 
 import java.util.Date;
 
