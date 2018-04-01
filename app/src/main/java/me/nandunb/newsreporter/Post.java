@@ -14,6 +14,8 @@ public class Post {
     private String caption;
     private Date createdOn;
 
+    public Post(){}
+
     public Post(String email, String displayName, String photoUrl, String caption){
         this.email = email;
         this.displayName = displayName;
