@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -16,7 +17,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import me.nandunb.newsreporter.NewsFeedFragment;
 import me.nandunb.newsreporter.R;
 
-public class NewsFeedActivity extends FragmentActivity implements NewsFeedFragment.OnFragmentInteractionListener {
+public class NewsFeedActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     private FirebaseDatabase mDatabase;
@@ -72,8 +73,4 @@ public class NewsFeedActivity extends FragmentActivity implements NewsFeedFragme
         startActivity(intent);
     }
 
-    @Override
-    public void onFragmentInteraction(Uri uri) {
-
-    }
 }
