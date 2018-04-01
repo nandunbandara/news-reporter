@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/imgPreview"
+        android:layout_width="0dp"
+        android:layout_height="346dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/ic_menu_camera" />
+
+    <TextView
+        android:id="@+id/txtPostedLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="Posted by "
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgPreview" />
+
+    <TextView
+        android:id="@+id/txtDisplayName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Nandun Bandara"
+        android:textSize="12sp"
+        app:layout_constraintStart_toEndOf="@+id/txtPostedLabel"
+        app:layout_constraintTop_toBottomOf="@+id/imgPreview" />
+
+    <TextView
+        android:id="@+id/txtCreatedOn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="8dp"
+        android:text="12th March 2018"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgPreview" />
+
+    <TextView
+        android:id="@+id/txtCaption"
+        android:layout_width="381dp"
+        android:layout_height="138dp"
+        android:layout_marginTop="8dp"
+        android:text="Lorem ipsum dolor sit amet, vero dolore rationibus ea eos, sit officiis scriptorem id, ei rebum appetere vim. Lobortis qualisque adolescens his id. Mel ex accusam consequat, est ne munere sententiae, cum ignota iisque et. No vivendo honestatis quaerendum cum, pertinax intellegat ad vim. Laudem euismod sapientem ad mea, lorem labore nemore in his."
+        app:layout_constraintTop_toBottomOf="@+id/txtCreatedOn"
+        tools:layout_editor_absoluteX="16dp" />
+
+</android.support.constraint.ConstraintLayout>

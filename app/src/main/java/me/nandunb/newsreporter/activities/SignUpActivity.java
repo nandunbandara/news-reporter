@@ -1,4 +1,4 @@
-package me.nandunb.newsreporter;
+package me.nandunb.newsreporter.activities;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -16,6 +16,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
+
+import me.nandunb.newsreporter.R;
 
 public class SignUpActivity extends AppCompatActivity {
 

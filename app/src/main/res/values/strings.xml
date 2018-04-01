@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">NewsReporter</string>
+
+    <!--Sign In and Sign Up-->
+    <string name="app_title">| NEWS REPORTER |</string>
+    <string name="signup_reqired_string">Don\'t have an account?</string>
+    <string name="sigin_required_string">Already have an account?</string>
+    <string name="signup_required_link">SignUp</string>
+    <string name="signin_button">Login</string>
+    <string name="signup_button">Sign Up</string>
+    <string name="email_hint">Email</string>
+    <string name="password_hint">Pasword</string>
+    <string name="display_name_hint">Display Name</string>
 </resources>

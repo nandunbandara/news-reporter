@@ -1,4 +1,4 @@
-package me.nandunb.newsreporter;
+package me.nandunb.newsreporter.activities;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -24,8 +24,10 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.io.ByteArrayOutputStream;
-import java.sql.Timestamp;
 import java.util.Date;
+
+import me.nandunb.newsreporter.R;
+import me.nandunb.newsreporter.models.Post;
 
 public class NewPostActivity extends AppCompatActivity {
 
@@ -46,6 +48,8 @@ public class NewPostActivity extends AppCompatActivity {
         mStorageRef = FirebaseStorage.getInstance("gs://news-reporter-4fd27.appspot.com").getReference();
 
         pDialog = new ProgressDialog(NewPostActivity.this);
+
+        capturePhoto(null);
     }
 
     @Override

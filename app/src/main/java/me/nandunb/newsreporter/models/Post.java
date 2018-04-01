@@ -1,4 +1,4 @@
-package me.nandunb.newsreporter;
+package me.nandunb.newsreporter.models;
 
 import java.util.Date;
 
@@ -13,6 +13,8 @@ public class Post {
     private String photoUrl;
     private String caption;
     private Date createdOn;
+
+    public Post(){}
 
     public Post(String email, String displayName, String photoUrl, String caption){
         this.email = email;
