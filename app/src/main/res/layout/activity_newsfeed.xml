@@ -25,11 +25,12 @@
         android:id="@+id/imgCapture"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:onClick="addNewPost"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/technology"
-        tools:layout_editor_absoluteX="16dp" />
+        app:srcCompat="@drawable/technology" />
 
     <ImageView
         android:id="@+id/imgLogo"
@@ -54,19 +55,19 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/arrows" />
 
-    <fragment
-        android:id="@+id/fragment"
-        android:name="me.nandunb.newsreporter.NewsFeedFragment"
-        android:layout_width="374dp"
-        android:layout_height="668dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtLogoText" />
+    <!--<fragment-->
+        <!--android:id="@+id/fragment"-->
+        <!--android:name="me.nandunb.newsreporter.NewsFeedFragment"-->
+        <!--android:layout_width="374dp"-->
+        <!--android:layout_height="668dp"-->
+        <!--android:layout_marginBottom="8dp"-->
+        <!--android:layout_marginEnd="8dp"-->
+        <!--android:layout_marginStart="8dp"-->
+        <!--android:layout_marginTop="8dp"-->
+        <!--app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--app:layout_constraintEnd_toEndOf="parent"-->
+        <!--app:layout_constraintStart_toStartOf="parent"-->
+        <!--app:layout_constraintTop_toBottomOf="@+id/txtLogoText" />-->
 
 
 </android.support.constraint.ConstraintLayout>
