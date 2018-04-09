@@ -14,6 +14,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -36,6 +37,7 @@ public class FeedActivity extends AppCompatActivity implements NavigationView.On
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setHomeAsUpIndicator(R.drawable.ic_menu_black_24dp);
+        actionBar.setTitle(R.string.news_feed_title);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -62,7 +64,18 @@ public class FeedActivity extends AppCompatActivity implements NavigationView.On
 
         if(currentUser == null){
             goToLogin();
+            return;
         }
+
+//        TextView username = findViewById(R.id.nav_user_name);
+//
+//        String displayName = currentUser.getDisplayName();
+//
+//        if(displayName == null | displayName.isEmpty()){
+//            username.setText(R.string.unnamed);
+//        }
+//
+//        username.setText(currentUser.getDisplayName());
 
     }
 
