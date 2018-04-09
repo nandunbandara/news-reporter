@@ -36,5 +36,7 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/ic_menu_camera" />
+        app:srcCompat="@android:drawable/ic_menu_camera"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"/>
 </android.support.constraint.ConstraintLayout>

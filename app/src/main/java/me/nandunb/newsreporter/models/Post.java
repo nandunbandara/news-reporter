@@ -13,6 +13,7 @@ public class Post {
     private String photoUrl;
     private String caption;
     private Date createdOn;
+    private int likes;
 
     public Post(){}
 
@@ -22,6 +23,7 @@ public class Post {
         this.photoUrl = photoUrl;
         this.caption = caption;
         this.createdOn = new Date();
+        this.likes = 0;
     }
 
     public String getEmail(){
@@ -42,6 +44,14 @@ public class Post {
 
     public Date getCreatedOn() {
         return createdOn;
+    }
+
+    public int getLikes() {
+        return likes;
+    }
+
+    public void setLikes(int likes) {
+        this.likes = likes;
     }
 
     public void setCaption(String caption) {
