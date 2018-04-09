@@ -8,6 +8,12 @@
     </group>
     <group android:checkableBehavior="single">
         <item
+            android:id="@+id/nav_drafts"
+            android:icon="@drawable/drafts"
+            android:title="@string/drafts" />
+    </group>
+    <group android:checkableBehavior="single">
+        <item
             android:id="@+id/nav_settings"
             android:icon="@drawable/cogwheel"
             android:title="@string/settings" />
