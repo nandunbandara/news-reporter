@@ -47,7 +47,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyViewHolder> 
         holder.likes.setText(String.format("%d",post.getLikes()));
         holder.caption.setText(post.getCaption());
 
-//        Glide.with(context).load(post.getPhotoUrl()).into(holder.image);
+        Glide.with(context).load(post.getPhotoUrl()).into(holder.image);
     }
 
     @Override
@@ -63,7 +63,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyViewHolder> 
             super(view);
             caption = (TextView) view.findViewById(R.id.txtCardCaption);
             likes = (TextView) view.findViewById(R.id.txtLikes);
-//            image = (ImageView) view.findViewById(R.id.card_image);
+            image = (ImageView) view.findViewById(R.id.card_image);
             username = (TextView) view.findViewById(R.id.card_username);
             datetime = (TextView) view.findViewById(R.id.card_date);
         }

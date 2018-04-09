@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="2dp"
+    android:layout_marginBottom="2dp"
+    android:layout_marginHorizontal="5dp"
+    android:paddingVertical="2dp">
 
     <android.support.v7.widget.CardView
         android:id="@+id/cardView"
         android:layout_width="match_parent"
-        android:layout_height="273dp"
+        android:layout_height="282dp"
         app:cardBackgroundColor="@android:color/white"
         app:cardCornerRadius="0dp"
         app:cardElevation="0.7dp"
@@ -23,31 +27,32 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <!--<ImageView-->
-                <!--android:id="@+id/card_image"-->
-                <!--android:layout_width="373dp"-->
-                <!--android:layout_height="180dp"-->
-                <!--android:layout_marginEnd="8dp"-->
-                <!--android:layout_marginStart="8dp"-->
-                <!--android:layout_marginTop="8dp"-->
-                <!--android:contentDescription="CardImageViewDesc"-->
-                <!--android:scaleType="centerCrop"-->
-                <!--android:src="@drawable/background"-->
-                <!--app:layout_constraintEnd_toEndOf="parent"-->
-                <!--app:layout_constraintStart_toStartOf="parent"-->
-                <!--app:layout_constraintTop_toTopOf="parent" />-->
+            <ImageView
+                android:id="@+id/card_image"
+                android:layout_width="373dp"
+                android:layout_height="180dp"
+                android:layout_above="@+id/txtCardCaption"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/txtLikes"
+                android:contentDescription="CardImageViewDesc"
+                android:scaleType="centerCrop"
+                android:src="@drawable/photo_camera"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <ImageButton
                 android:id="@+id/card_ib_like"
                 android:layout_width="80dp"
                 android:layout_height="50dp"
-                android:layout_marginBottom="16dp"
-                android:layout_marginEnd="4dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentTop="true"
                 android:adjustViewBounds="false"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:contentDescription="FavButtonDesc"
                 android:cropToPadding="false"
-                android:padding="15dp"
+                android:padding="10dp"
                 android:scaleType="fitCenter"
                 android:src="@drawable/like"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -57,11 +62,12 @@
                 android:id="@+id/txtLikes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:layout_marginEnd="32dp"
-                android:layout_marginTop="8dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignTop="@+id/card_username"
+                android:layout_marginEnd="64dp"
                 android:text="1.5k"
-                android:textSize="12sp"
+                android:textAlignment="textEnd"
+                android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/card_ib_like"
@@ -69,15 +75,15 @@
 
             <TextView
                 android:id="@+id/txtCardCaption"
-                android:layout_width="288dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:layout_marginTop="10dp"
+                android:layout_above="@+id/card_date"
+                android:layout_alignParentStart="true"
                 android:fontFamily="sans-serif"
                 android:gravity="center_vertical"
                 android:text="Joshua Sortino - Via Unsplash"
                 android:textAlignment="viewStart"
-                android:textSize="12sp"
+                android:textSize="14sp"
                 app:layout_constraintBottom_toTopOf="@+id/card_date"
                 app:layout_constraintEnd_toStartOf="@+id/card_ib_like"
                 app:layout_constraintHorizontal_bias="0.47"
@@ -90,10 +96,12 @@
                 android:id="@+id/textView8"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:layout_marginStart="8dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="9dp"
+                android:layout_marginTop="8dp"
                 android:text="Posted by"
-                android:textSize="10sp"
+                android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
 
@@ -101,11 +109,13 @@
                 android:id="@+id/card_username"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
+                android:layout_alignBaseline="@+id/textView8"
+                android:layout_alignBottom="@+id/textView8"
                 android:layout_marginStart="8dp"
+                android:layout_toEndOf="@+id/textView8"
                 android:text="Demo User"
                 android:textAlignment="viewStart"
-                android:textSize="10sp"
+                android:textSize="12sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/textView8" />
@@ -114,10 +124,10 @@
                 android:id="@+id/card_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:layout_marginEnd="8dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentStart="true"
                 android:text="12/12/12 2:00 a.m."
-                android:textSize="10sp"
+                android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/card_ib_like" />
 
