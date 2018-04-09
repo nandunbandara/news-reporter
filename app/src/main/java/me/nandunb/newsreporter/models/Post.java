@@ -1,5 +1,6 @@
 package me.nandunb.newsreporter.models;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -44,6 +45,12 @@ public class Post {
 
     public Date getCreatedOn() {
         return createdOn;
+    }
+
+    public String getDateTime() {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
+        Date now = new Date();
+        return sdf.format(now);
     }
 
     public int getLikes() {
