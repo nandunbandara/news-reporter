@@ -6,54 +6,24 @@
     android:layout_height="match_parent"
     tools:context="me.nandunb.newsreporter.activities.NewsFeedActivity">
 
-    <TextView
-        android:id="@+id/txtLogoText"
-        android:layout_width="wrap_content"
-        android:layout_height="17dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:text="| NEWS REPORTER |"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/imgLogout"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toEndOf="@+id/imgCapture"
-        app:layout_constraintTop_toBottomOf="@+id/imgLogo" />
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/news_feed_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
 
-    <ImageView
-        android:id="@+id/imgCapture"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:onClick="addNewPost"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/technology" />
+    <!--<menu xmlns:android="http://schemas.android.com/apk/res/android" >-->
 
-    <ImageView
-        android:id="@+id/imgLogo"
-        android:layout_width="wrap_content"
-        android:layout_height="38dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        app:layout_constraintEnd_toStartOf="@+id/imgLogout"
-        app:layout_constraintHorizontal_bias="0.354"
-        app:layout_constraintStart_toEndOf="@+id/imgCapture"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logo" />
 
-    <ImageView
-        android:id="@+id/imgLogout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="16dp"
-        android:onClick="signOut"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/arrows" />
+        <!--&lt;!&ndash; Settings, should always be in the overflow &ndash;&gt;-->
+        <!--<item android:id="@+id/action_settings"-->
+            <!--android:title="@string/action_refresh"-->
+            <!--android:showAsAction="never"/>-->
+
+    <!--</menu>-->
 
     <!--<fragment-->
         <!--android:id="@+id/fragment"-->
@@ -68,6 +38,14 @@
         <!--app:layout_constraintEnd_toEndOf="parent"-->
         <!--app:layout_constraintStart_toStartOf="parent"-->
         <!--app:layout_constraintTop_toBottomOf="@+id/txtLogoText" />-->
+
+    <!--<android.support.design.widget.FloatingActionButton-->
+        <!--android:id="@+id/fab"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_gravity="bottom|end"-->
+        <!--android:layout_margin="@dimen/fab_margin"-->
+        <!--android:src="@drawable/ic_new" />-->
 
 
 </android.support.constraint.ConstraintLayout>

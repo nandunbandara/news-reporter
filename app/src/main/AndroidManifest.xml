@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="me.nandunb.newsreporter">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -17,10 +19,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.NewPostActivity" />
-        <activity android:name=".activities.SignUpActivity"></activity>
+        <activity android:name=".activities.SignUpActivity" />
+        <activity
+            android:name=".activities.FeedActivity"
+            android:label="@string/title_activity_feed"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".activities.NewPostActivity"
+            android:label="@string/title_activity_new_post"
+            android:theme="@style/AppTheme"
+            android:parentActivityName=".activities.FeedActivity" ></activity>
     </application>
-
-    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>

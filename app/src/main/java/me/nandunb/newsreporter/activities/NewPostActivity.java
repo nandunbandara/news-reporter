@@ -3,10 +3,13 @@ package me.nandunb.newsreporter.activities;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -43,6 +46,11 @@ public class NewPostActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_post);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
 
         mAuth = FirebaseAuth.getInstance();
         mStorageRef = FirebaseStorage.getInstance("gs://news-reporter-4fd27.appspot.com").getReference();
@@ -51,6 +59,7 @@ public class NewPostActivity extends AppCompatActivity {
 
         capturePhoto(null);
     }
+
 
     @Override
     protected void onStart() {
@@ -74,7 +83,7 @@ public class NewPostActivity extends AppCompatActivity {
         if(requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
             Bundle extras = data.getExtras();
             Bitmap imageBitmap = (Bitmap) extras.get("data");
-            ImageView imagePreview = findViewById(R.id.imagePreview);
+            ImageView imagePreview = findViewById(R.id.new_image_preview);
 
             imagePreview.setImageBitmap(imageBitmap);
         }
@@ -98,7 +107,7 @@ public class NewPostActivity extends AppCompatActivity {
 
         StorageReference photoStorageRef = mStorageRef.child(fileName);
 
-        ImageView imagePreview = findViewById(R.id.imagePreview);
+        ImageView imagePreview = findViewById(R.id.new_image_preview);
 
         imagePreview.setDrawingCacheEnabled(true);
         imagePreview.buildDrawingCache();
@@ -145,9 +154,6 @@ public class NewPostActivity extends AppCompatActivity {
 
         ref.child(postId).setValue(post);
 
-        Toast.makeText(NewPostActivity.this, "New post created!", Toast.LENGTH_LONG);
-
-
         //Back to news feed view
         Intent intent = new Intent(NewPostActivity.this, NewsFeedActivity.class);
         startActivity(intent);
@@ -155,4 +161,5 @@ public class NewPostActivity extends AppCompatActivity {
         pDialog.dismiss();
 
     }
+
 }
