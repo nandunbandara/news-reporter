@@ -47,7 +47,7 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
     public void updateUI(FirebaseUser user){
-        Intent intent = new Intent(this, NewsFeedActivity.class);
+        Intent intent = new Intent(this, FeedActivity.class);
         intent.putExtra("displayName", user.getDisplayName());
         intent.putExtra("email", user.getEmail());
         startActivity(intent);
