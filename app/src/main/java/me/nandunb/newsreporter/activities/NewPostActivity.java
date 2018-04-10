@@ -82,7 +82,7 @@ public class NewPostActivity extends AppCompatActivity {
                 .setIcon(android.R.drawable.ic_dialog_alert)
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {
-                        //TODO: save draft
+                        addDraft();
                     }})
                 .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {
@@ -187,11 +187,11 @@ public class NewPostActivity extends AppCompatActivity {
 
     }
 
-    public void addDraft(View view){
+    public void addDraft(){
         pDialog.setMessage("Saving draft...");
         pDialog.show();
 
-        FirebaseUser user = mAuth.getCurrentUser();
+        final FirebaseUser user = mAuth.getCurrentUser();
 
         TextView txtCaption = findViewById(R.id.txtCaption);
         final String caption = txtCaption.getText().toString();
@@ -219,7 +219,7 @@ public class NewPostActivity extends AppCompatActivity {
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                 String photoUrl = taskSnapshot.getDownloadUrl().toString();
 
-
+                addDraftRecord(user, photoUrl, caption);
 
             }
         }).addOnFailureListener(new OnFailureListener() {
@@ -234,7 +234,7 @@ public class NewPostActivity extends AppCompatActivity {
     }
 
 
-    public void addDraftRecord(String photoUrl, String caption){
+    public void addDraftRecord(FirebaseUser user, String photoUrl, String caption){
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference ref = database.getReference("drafts");
@@ -245,7 +245,7 @@ public class NewPostActivity extends AppCompatActivity {
 
         Log.d(TAG, "postId:"+postId);
 
-        ref.child(postId).setValue(draft);
+        ref.child(user.getUid()).child(postId).setValue(draft);
 
         //Back to news feed view
         Intent intent = new Intent(NewPostActivity.this, FeedActivity.class);
