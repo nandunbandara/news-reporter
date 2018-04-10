@@ -1,5 +1,6 @@
 package me.nandunb.newsreporter.models;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -72,5 +73,12 @@ public class Post {
 
     public void setPhotoUrl(String photoUrl) {
         this.photoUrl = photoUrl;
+    }
+
+
+    public String getDateTime() {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM HH:mm");
+        Date now = new Date();
+        return sdf.format(now);
     }
 }

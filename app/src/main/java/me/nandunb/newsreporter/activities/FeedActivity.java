@@ -26,8 +26,11 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import me.nandunb.newsreporter.*;
@@ -120,6 +123,18 @@ public class FeedActivity extends AppCompatActivity implements NavigationView.On
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        retrieve();
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        retrieve();
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
@@ -187,7 +202,9 @@ public class FeedActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void retrieve(){
-        ref.addChildEventListener(new ChildEventListener() {
+        Query query = ref.orderByChild("createdOn");
+
+        query.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 fetchData(dataSnapshot);
@@ -213,11 +230,11 @@ public class FeedActivity extends AppCompatActivity implements NavigationView.On
 
             }
         });
+
+
     }
 
     private void fetchData(DataSnapshot snapshot){
-
-        postsList.clear();
 
         Log.d(TAG, snapshot.getKey());
 

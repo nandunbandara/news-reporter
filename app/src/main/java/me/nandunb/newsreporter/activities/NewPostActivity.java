@@ -155,7 +155,7 @@ public class NewPostActivity extends AppCompatActivity {
         ref.child(postId).setValue(post);
 
         //Back to news feed view
-        Intent intent = new Intent(NewPostActivity.this, NewsFeedActivity.class);
+        Intent intent = new Intent(NewPostActivity.this, FeedActivity.class);
         startActivity(intent);
 
         pDialog.dismiss();
