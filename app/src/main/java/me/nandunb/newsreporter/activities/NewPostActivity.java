@@ -86,6 +86,10 @@ public class NewPostActivity extends AppCompatActivity {
             ImageView imagePreview = findViewById(R.id.new_image_preview);
 
             imagePreview.setImageBitmap(imageBitmap);
+        } else if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_CANCELED) {
+            this.finish();
+            Intent intent = new Intent(this, FeedActivity.class);
+            startActivity(intent);
         }
     }
 
