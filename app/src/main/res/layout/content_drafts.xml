@@ -8,4 +8,16 @@
     tools:context="me.nandunb.newsreporter.activities.DraftsActivity"
     tools:showIn="@layout/activity_drafts">
 
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/drafts_recycler_view"
+        android:layout_width="0dp"
+        android:layout_height="606dp"
+        android:layout_marginTop="8dp"
+        android:clipToPadding="false"
+        android:scrollbars="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </android.support.constraint.ConstraintLayout>
