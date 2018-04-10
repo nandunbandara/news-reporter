@@ -156,6 +156,13 @@ public class FeedActivity extends AppCompatActivity implements NavigationView.On
 
             }
 
+            case R.id.nav_drafts: {
+
+                Intent intent = new Intent(this, DraftsActivity.class);
+                startActivity(intent);
+                break;
+            }
+
         }
 
         mDrawerLayout.closeDrawer(GravityCompat.START);
