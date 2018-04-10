@@ -7,13 +7,22 @@ import java.util.Date;
  * Created by nandunb on 4/10/18.
  */
 
-public class Draft {
+public class Draft extends News{
 
     private Date updatedOn;
 
 
     public Draft(){
+        super();
         this.updatedOn = new Date();
+    }
+
+    public Draft(String photoUrl, String caption){
+
+        super();
+        this.updatedOn = new Date();
+        super.photoUrl = photoUrl;
+        super.caption = caption;
     }
 
     public Date getUpdatedOn() {
