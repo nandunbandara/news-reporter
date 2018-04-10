@@ -23,6 +23,7 @@ public class Draft extends News{
         this.updatedOn = new Date();
         super.photoUrl = photoUrl;
         super.caption = caption;
+
     }
 
     public Date getUpdatedOn() {
