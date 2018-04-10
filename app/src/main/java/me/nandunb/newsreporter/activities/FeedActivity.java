@@ -26,6 +26,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -201,7 +202,9 @@ public class FeedActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void retrieve(){
-        ref.addChildEventListener(new ChildEventListener() {
+        Query query = ref.orderByChild("createdOn");
+
+        query.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 fetchData(dataSnapshot);
