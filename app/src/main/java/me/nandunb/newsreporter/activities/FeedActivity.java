@@ -30,6 +30,7 @@ import com.google.firebase.database.Query;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -202,7 +203,7 @@ public class FeedActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void retrieve(){
-        Query query = ref.orderByChild("createdOn");
+        Query query = ref.orderByChild("time");
 
         query.addChildEventListener(new ChildEventListener() {
             @Override
@@ -240,6 +241,7 @@ public class FeedActivity extends AppCompatActivity implements NavigationView.On
 
         Post post = snapshot.getValue(Post.class);
         postsList.add(post);
+        Collections.reverse(postsList);
 
         Log.d(TAG, post.getEmail());
 
