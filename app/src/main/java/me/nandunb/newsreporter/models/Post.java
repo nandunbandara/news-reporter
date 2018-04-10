@@ -7,23 +7,23 @@ import java.util.Date;
  * Created by nandunb on 3/31/18.
  */
 
-public class Post {
+public class Post extends News{
 
     private String email;
     private String displayName;
-    private String photoUrl;
-    private String caption;
-    private Date createdOn;
     private int likes;
 
-    public Post(){}
+    public Post(){
+        super();
+    }
 
     public Post(String email, String displayName, String photoUrl, String caption){
+        super();
         this.email = email;
         this.displayName = displayName;
-        this.photoUrl = photoUrl;
-        this.caption = caption;
-        this.createdOn = new Date();
+        super.photoUrl = photoUrl;
+        super.caption = caption;
+        super.createdOn = new Date();
         this.likes = 0;
     }
 
@@ -33,10 +33,6 @@ public class Post {
 
     public String getDisplayName() {
         return displayName;
-    }
-
-    public String getPhotoUrl() {
-        return photoUrl;
     }
 
     public String getCaption() {
@@ -71,14 +67,4 @@ public class Post {
         this.email = email;
     }
 
-    public void setPhotoUrl(String photoUrl) {
-        this.photoUrl = photoUrl;
-    }
-
-
-    public String getDateTime() {
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM HH:mm");
-        Date now = new Date();
-        return sdf.format(now);
-    }
 }
