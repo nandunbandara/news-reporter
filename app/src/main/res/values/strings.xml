@@ -26,7 +26,9 @@
     <string name="title_activity_new_post">NewPostActivity</string>
 
     <string name="news_feed_title">News Feed</string>
+    <string name="drafts_title">Drafts</string>
     <string name="unnamed">Unnamed User</string>
+    <string name="clear_drafts">Clear</string>
 
 
     <string name="action_settings">Settings</string>
