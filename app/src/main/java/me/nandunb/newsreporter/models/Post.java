@@ -47,12 +47,6 @@ public class Post {
         return createdOn;
     }
 
-    public String getDateTime() {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
-        Date now = new Date();
-        return sdf.format(now);
-    }
-
     public int getLikes() {
         return likes;
     }
@@ -79,5 +73,12 @@ public class Post {
 
     public void setPhotoUrl(String photoUrl) {
         this.photoUrl = photoUrl;
+    }
+
+
+    public String getDateTime() {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM HH:mm");
+        Date now = new Date();
+        return sdf.format(now);
     }
 }
