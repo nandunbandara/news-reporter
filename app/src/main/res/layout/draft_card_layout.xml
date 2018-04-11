@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="2dp"
+    android:layout_marginBottom="2dp"
+    android:layout_marginHorizontal="5dp"
+    android:paddingVertical="2dp">
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
+        android:layout_height="305dp"
+        app:cardBackgroundColor="@android:color/white"
+        app:cardCornerRadius="0dp"
+        app:cardElevation="0.7dp"
+        app:cardMaxElevation="1dp"
+        app:cardPreventCornerOverlap="true"
+        app:cardUseCompatPadding="true"
+        app:contentPadding="10dp"
+        app:contentPaddingBottom="0dp">
+
+        <RelativeLayout
+            android:id="@+id/relativeLayout3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/draft_card_image"
+                android:layout_width="373dp"
+                android:layout_height="180dp"
+                android:layout_above="@+id/draft_txtCardCaption"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="16dp"
+                android:contentDescription="CardImageViewDesc"
+                android:scaleType="centerCrop"
+                android:src="@drawable/photo_camera"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/draft_txtCardCaption"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/button2"
+                android:layout_alignEnd="@+id/button2"
+                android:layout_alignStart="@+id/draft_card_image"
+                android:fontFamily="sans-serif"
+                android:gravity="center_vertical"
+                android:text="Joshua Sortino - Via Unsplash"
+                android:textAlignment="viewStart"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toTopOf="@+id/card_date"
+                app:layout_constraintEnd_toStartOf="@+id/card_ib_like"
+                app:layout_constraintHorizontal_bias="0.47"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/card_image"
+                app:layout_constraintVertical_bias="0.0"
+                tools:ignore="RtlCompat" />
+
+            <TextView
+                android:id="@+id/draft_card_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignStart="@+id/draft_txtCardCaption"
+                android:layout_marginBottom="10dp"
+                android:text="12/12/12 2:00 a.m."
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/draft_card_ib_like" />
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/draft_card_date"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="11dp"
+                android:text="Button" />
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>

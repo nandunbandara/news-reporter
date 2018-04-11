@@ -29,6 +29,7 @@
     <string name="drafts_title">Drafts</string>
     <string name="unnamed">Unnamed User</string>
     <string name="clear_drafts">Clear</string>
+    <string name="feed_refresh">Refresh</string>
 
 
     <string name="action_settings">Settings</string>

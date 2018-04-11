@@ -35,7 +35,7 @@ public class DraftAdapter extends RecyclerView.Adapter<DraftAdapter.DraftViewHol
     @Override
     public DraftViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.news_card_layout, parent, false);
+                .inflate(R.layout.draft_card_layout, parent, false);
 
         return new DraftViewHolder(itemView);
     }
@@ -60,9 +60,9 @@ public class DraftAdapter extends RecyclerView.Adapter<DraftAdapter.DraftViewHol
 
         public DraftViewHolder(View view) {
             super(view);
-            caption = (TextView) view.findViewById(R.id.txtCardCaption);
-            image = (ImageView) view.findViewById(R.id.card_image);
-            datetime = (TextView) view.findViewById(R.id.card_date);
+            caption = (TextView) view.findViewById(R.id.draft_txtCardCaption);
+            image = (ImageView) view.findViewById(R.id.draft_card_image);
+            datetime = (TextView) view.findViewById(R.id.draft_card_date);
         }
     }
 
