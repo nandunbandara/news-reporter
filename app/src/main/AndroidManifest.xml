@@ -23,13 +23,18 @@
         <activity
             android:name=".activities.FeedActivity"
             android:label="@string/title_activity_feed"
-            android:theme="@style/AppTheme"
-            android:launchMode="singleTop"/>
+            android:launchMode="singleTop"
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".activities.NewPostActivity"
             android:label="@string/title_activity_new_post"
             android:parentActivityName=".activities.FeedActivity"
             android:theme="@style/AppTheme" />
+        <activity
+            android:name=".activities.DraftsActivity"
+            android:label="@string/title_activity_drafts"
+            android:parentActivityName=".activities.FeedActivity"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>

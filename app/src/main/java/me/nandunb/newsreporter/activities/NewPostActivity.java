@@ -1,6 +1,8 @@
 package me.nandunb.newsreporter.activities;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -12,6 +14,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,6 +33,7 @@ import java.io.ByteArrayOutputStream;
 import java.util.Date;
 
 import me.nandunb.newsreporter.R;
+import me.nandunb.newsreporter.models.Draft;
 import me.nandunb.newsreporter.models.Post;
 
 public class NewPostActivity extends AppCompatActivity {
@@ -69,6 +73,23 @@ public class NewPostActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onBackPressed() {
+
+        new AlertDialog.Builder(this)
+                .setTitle("Draft")
+                .setMessage("Do you want to save this as a draft?")
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        addDraft();
+                    }})
+                .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        NewPostActivity.super.onBackPressed();
+                    }}).show();
+
+    }
 
     public void capturePhoto(View view) {
 
@@ -157,6 +178,74 @@ public class NewPostActivity extends AppCompatActivity {
         Log.d(TAG, "postId:"+postId);
 
         ref.child(postId).setValue(post);
+
+        //Back to news feed view
+        Intent intent = new Intent(NewPostActivity.this, FeedActivity.class);
+        startActivity(intent);
+
+        pDialog.dismiss();
+
+    }
+
+    public void addDraft(){
+        pDialog.setMessage("Saving draft...");
+        pDialog.show();
+
+        final FirebaseUser user = mAuth.getCurrentUser();
+
+        TextView txtCaption = findViewById(R.id.txtCaption);
+        final String caption = txtCaption.getText().toString();
+
+        final String fileName = "images/"+new Date().toString()+".jpg";
+
+        StorageReference photoStorageRef = mStorageRef.child(fileName);
+
+        ImageView imagePreview = findViewById(R.id.new_image_preview);
+
+        imagePreview.setDrawingCacheEnabled(true);
+        imagePreview.buildDrawingCache();
+
+        Bitmap bitmap = imagePreview.getDrawingCache();
+
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+        byte[] data = baos.toByteArray();
+
+        UploadTask uploadTask = photoStorageRef.putBytes(data);
+
+        uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                String photoUrl = taskSnapshot.getDownloadUrl().toString();
+
+                addDraftRecord(user, photoUrl, caption);
+
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                pDialog.dismiss();
+                Log.w(TAG, "Post created: failure");
+                Toast.makeText(NewPostActivity.this, "Could not create new post!", Toast.LENGTH_LONG);
+            }
+        });
+
+    }
+
+
+    public void addDraftRecord(FirebaseUser user, String photoUrl, String caption){
+
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference ref = database.getReference("drafts");
+
+        Draft draft = new Draft(photoUrl, caption);
+
+        String postId = String.format("%d", draft.getCreatedOn().getTime());
+
+        Log.d(TAG, "postId:"+postId);
+
+        ref.child(user.getUid()).child(postId).setValue(draft);
 
         //Back to news feed view
         Intent intent = new Intent(NewPostActivity.this, FeedActivity.class);

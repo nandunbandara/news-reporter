@@ -15,6 +15,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
@@ -146,6 +148,13 @@ public class FeedActivity extends AppCompatActivity implements NavigationView.On
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.options_menu_feed, menu);
+        return true;
+    }
+
+    @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
         switch(item.getItemId()){
@@ -155,6 +164,13 @@ public class FeedActivity extends AppCompatActivity implements NavigationView.On
                 signOut();
                 break;
 
+            }
+
+            case R.id.nav_drafts: {
+
+                Intent intent = new Intent(this, DraftsActivity.class);
+                startActivity(intent);
+                break;
             }
 
         }
