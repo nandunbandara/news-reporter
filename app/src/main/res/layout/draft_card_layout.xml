@@ -70,17 +70,16 @@
                 android:layout_marginBottom="10dp"
                 android:text="12/12/12 2:00 a.m."
                 android:textSize="12sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/draft_card_ib_like" />
+                app:layout_constraintBottom_toBottomOf="parent" />
 
             <Button
                 android:id="@+id/button2"
+                style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignBottom="@+id/draft_card_date"
-                android:layout_alignParentEnd="true"
-                android:layout_marginEnd="11dp"
-                android:text="Button" />
+                android:layout_alignEnd="@+id/draft_card_image"
+                android:text="@string/draft_btn_edit" />
 
         </RelativeLayout>
 

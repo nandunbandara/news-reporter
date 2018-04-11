@@ -132,4 +132,8 @@ public class DraftsActivity extends AppCompatActivity {
 
     }
 
+    private void edit(View view){
+
+    }
+
 }
