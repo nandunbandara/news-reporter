@@ -68,9 +68,9 @@ public class SignInActivity extends AppCompatActivity {
                 if(task.isSuccessful()) {
                     Log.d(TAG, "signInWithEmailAndPassword: success");
                     FirebaseUser user = mAuth.getCurrentUser();
-                    Toast.makeText(SignInActivity.this, "Login successful!", Toast.LENGTH_SHORT).show();
-                    pDialog.dismiss();
                     updateUI(user);
+                    pDialog.dismiss();
+                    Toast.makeText(SignInActivity.this, "Login successful!", Toast.LENGTH_SHORT).show();
                 }else{
                     pDialog.dismiss();
                     Log.w(TAG, "signInWithEmailAndPassword: failure");
@@ -91,5 +91,13 @@ public class SignInActivity extends AppCompatActivity {
     public void goToSignUp(View view){
         Intent intent = new Intent(this, SignUpActivity.class);
         startActivity(intent);
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent startMain = new Intent(Intent.ACTION_MAIN);
+        startMain.addCategory(Intent.CATEGORY_HOME);
+        startMain.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(startMain);
     }
 }
