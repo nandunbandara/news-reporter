@@ -138,6 +138,10 @@ public class FeedActivity extends AppCompatActivity implements NavigationView.On
             case android.R.id.home:
                 mDrawerLayout.openDrawer(GravityCompat.START);
                 return true;
+            case R.id.refresh_btn:
+                postsList.clear();
+                retrieve();
+                break;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -214,7 +218,7 @@ public class FeedActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void retrieve(){
-        Query query = ref.orderByChild("time");
+        Query query = ref.orderByChild("dateTime");
 
         query.addChildEventListener(new ChildEventListener() {
             @Override
